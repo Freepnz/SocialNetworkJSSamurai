@@ -6,8 +6,7 @@ const Profile = () => {
             <div>My post
           <div>New post</div>
                 <div>
-                    <div>post 1</div>
-                    <div>post 2</div>
+                    <div> View post 2</div>
                 </div>
             </div>
         </div>
