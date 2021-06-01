@@ -4,17 +4,21 @@ const NavBar = () => {
     return (
         <nav className={moduleStyle.nav}>
             <div className={moduleStyle.item}>
-                <a>Profile</a>
+                <a href='/profile'>Profile</a>
             </div>
             <div className={moduleStyle.item}>
-                <a>Message</a>
+                <a href='/dialogs'>Message</a>
             </div>
             <div className={`${moduleStyle.item} ${moduleStyle.active}`}>
-                <a>News</a>
+                <a href='/news'>News</a>
             </div>
             <div className={moduleStyle.item}>
-                <a>Music</a>
+                <a href='/music'>Music</a>
             </div>
+            <div className={moduleStyle.item}>
+                <a href='/settings'>Settings</a>
+            </div>
+
         </nav>
     );
 }

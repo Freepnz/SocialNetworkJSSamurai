@@ -10,8 +10,8 @@ const MyPosts = () => {
                 <button>Add post</button>
             </div>
             <div className={moduleStyle.MyPosts}>
-                <Post message='Hi, how are you to day?'/>
-                <Post message='This is my firs post?'/>
+                <Post message='Hi, how are you to day?' likeCount='15'/>
+                <Post message='This is my firs post?' likeCount='27'/>
             </div>
         </div>
     );
