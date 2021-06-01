@@ -2,6 +2,7 @@ import './App.css';
 import Header from './Components/Header/Header'
 import NavBar from './Components/NavBar/NavBar';
 import Profile from './Components/Profile/Profile';
+import Dialogs from './Components/Dialogs/Dialogs';
 
 const App = () => {
     return ( <
@@ -11,7 +12,10 @@ const App = () => {
         <
         NavBar / >
         <
-        Profile / >
+        div className = 'app-wrapper-content' >
+        <
+        Dialogs / > { /*       <Profile /> */ } <
+        /div>
 
         <
         /div>
