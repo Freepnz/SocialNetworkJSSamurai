@@ -1,11 +1,14 @@
 import moduleStyle from './MyPosts.module.css';
 import Post from './Post/Post';
+import React from "react";
 
 let postsData = [
     {id: 1, message: 'Hi, how are you to day', likeCount: 15},
     {id: 2, message: 'This is my firs post?', likeCount: 0},
-    {id: 3, message: 'It\'s second post', likeCount: 4},
+    {id: 3, message: 'It\'s second post', likeCount: 4}
 ]
+
+let postsElements = postsData.map(p => <Post message={p.message} likeCount={p.likeCount}/>)
 
 const MyPosts = () => {
     return (
@@ -20,9 +23,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={moduleStyle.myPosts}>
-                <Post message={postsData[0].message} likeCount={postsData[0].likeCount}/>
-                <Post message={postsData[1].message} likeCount={postsData[1].likeCount}/>
-                <Post message={postsData[2].message} likeCount={postsData[2].likeCount}/>
+                {postsElements}
             </div>
         </div>
     );

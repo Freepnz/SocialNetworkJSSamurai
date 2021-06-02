@@ -1,49 +1,34 @@
 import moduleStyle from './Dialogs.module.css';
 import React from 'react'
-import {NavLink} from 'react-router-dom';
-
-const DialogItem = (props) => {
-    return(
-        <div className={moduleStyle.dialogs + ' ' + moduleStyle.active}>
-            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
-        </div>
-    );
-}
-
-const Message = (props) => {
-    return (
-        <div className={moduleStyle.message}>{props.text}</div>
-    )
-}
-
-let dialogData = [
-    {id: 1, name: 'Diman'},
-    {id: 2, name: 'Oleg'},
-    {id: 3, name: 'Vera_Ivanovna'},
-    {id: 4, name: 'Zakhar_1994'},
-    {id: 5, name: 'Katya'}
-]
-
-let messageData = [
-    {id: 1, text: 'Hi, my name is Ivan. Where are you from?'},
-    {id: 2, text: 'hello, how many time?'},
-    {id: 3, text: 'you are sun of beach'}
-]
+import DialogItem from "./DialogItem/DialogsItem";
+import Messages from "./Messages/Messages";
 
 const Dialogs = (props) => {
+
+    let dialogs = [
+        {id: 1, name: 'Diman'},
+        {id: 2, name: 'Oleg'},
+        {id: 3, name: 'Vera_Ivanovna'},
+        {id: 4, name: 'Zakhar_1994'},
+        {id: 5, name: 'Katya'}
+    ]
+
+    let messages = [
+        {id: 1, text: 'Hi, my name is Ivan. Where are you from?'},
+        {id: 2, text: 'hello, how many time?'},
+        {id: 3, text: 'you are sun of beach'}
+    ]
+
+    let dialogsElement = dialogs.map(dialogs => <DialogItem name={dialogs.name} id={dialogs.id}/>)
+    let messagesElements = messages.map(messages => <Messages text={messages.text}/>)
+
     return (
         <div className={moduleStyle.dialogs}>
             <div className={moduleStyle.dialogsItem}>
-                <DialogItem name={dialogData[0].name} id={dialogData[0].id}/>
-                <DialogItem name={dialogData[1].name} id={dialogData[1].id}/>
-                <DialogItem name={dialogData[2].name} id={dialogData[2].id}/>
-                <DialogItem name={dialogData[3].name} id={dialogData[3].id}/>
-                <DialogItem name={dialogData[4].name} id={dialogData[4].id}/>
+                {dialogsElement}
             </div>
             <div className={moduleStyle.messageItem}>
-                <Message text={messageData[0].text}/>
-                <Message text={messageData[1].text}/>
-                <Message text={messageData[2].text}/>
+                {messagesElements}
             </div>
         </div>
     );
