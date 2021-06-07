@@ -20,7 +20,9 @@ const NavBar = () => {
             <div className={moduleStyle.item}>
                 <NavLink to='/settings' activeClassName={moduleStyle.activeLink}>Settings</NavLink>
             </div>
-
+            <div>
+                Friends
+            </div>
         </nav>
     );
 }

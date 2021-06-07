@@ -3,15 +3,12 @@ import moduleStyle from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () => {
-    return (
-        <div className={moduleStyle.content}>
-            <ProfileInfo/>
+const Profile = (props) => {
 
-            <MyPosts/>
-
-        </div>
-    );
+    return <div className={moduleStyle.content}>
+        <ProfileInfo/>
+        <MyPosts postsArray={props.state.postsArray}/>
+    </div>
 }
 
 export default Profile;
