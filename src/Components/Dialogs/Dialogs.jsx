@@ -19,13 +19,21 @@ const Dialogs = (props) => {
     let messagesElements = props.state.messagesArray.map(m => <Messages text={m.text}/>)
 
     return <div className={moduleStyle.dialogs}>
-            <div className={moduleStyle.dialogsItem}>
-                {dialogsElement}
-            </div>
-            <div className={moduleStyle.messageItem}>
-                {messagesElements}
+        <div className={moduleStyle.dialogsItem}>
+            {dialogsElement}
+        </div>
+        <div className={moduleStyle.messageItem}>
+            {messagesElements}
+            <div className={moduleStyle.sendMessageBlock}>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <span>
+                    <button>Отправить сообщение</button>
+                </span>
             </div>
         </div>
+    </div>
 }
 
 export default Dialogs;
