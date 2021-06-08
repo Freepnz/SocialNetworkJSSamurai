@@ -1,9 +1,13 @@
 .item {
-    color: red;
+    color: black;
 }
 
 .item img {
     width: 100px !important;
     height: 100px;
     border-radius: 50px;
+}
+
+.item span {
+    color: goldenrod;
 }
