@@ -42,7 +42,8 @@ let state = {
             {id: 1, text: 'Hi, my name is Ivan. Where are you from?'},
             {id: 2, text: 'hello, how many time?'},
             {id: 3, text: 'you are sun of beach'}
-        ]
+        ],
+        newDialogText: ''
     },
     friends: {
         friendsArray: [
@@ -77,11 +78,24 @@ export let addPost = () => {
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
-
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
+
+export let addDialog = () => {
+    let newDialog = {
+        id: 4,
+        text: state.dialogPage.newDialogText
+    };
+    state.dialogPage.messagesArray.push(newDialog);
+    state.dialogPage.newDialogText = '';
+    rerenderEntireTree(state);
+}
+export  let updateNewDialogText = (newDialog) => {
+    state.dialogPage.newDialogText = newDialog;
+}
+
 let findIdPostArray = () => {
     let i = state.profilePage.postsArray.length;
     return i;
