@@ -3,10 +3,10 @@ import {rerenderEntireTree} from "../render";
 let state = {
     profilePage: {
         postsArray: [
-            {id: 1, message: 'Hi, how are you to day', likeCount: 15},
-            {id: 2, message: 'This is my firs post?', likeCount: 0},
-            {id: 3, message: 'It\'s second post', likeCount: 4},
-            {id: 4, message: 'It\'s second post', likeCount: 11}
+            {id: 0, message: 'Hi, how are you to day', likeCount: 15},
+            {id: 1, message: 'This is my firs post?', likeCount: 0},
+            {id: 2, message: 'It\'s second post', likeCount: 4},
+            {id: 3, message: 'It\'s second post', likeCount: 11}
         ],
         newPostText: ''
     },
@@ -69,7 +69,7 @@ window.state = state;
 
 export let addPost = () => {
     let newPost = {
-        id: 5,
+        id: findIdPostArray(),
         message: state.profilePage.newPostText,
         likeCount: 0
     };
@@ -82,5 +82,10 @@ export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
+let findIdPostArray = () => {
+    let i = state.profilePage.postsArray.length;
+    return i;
+}
+
 
 export default state;
