@@ -1,4 +1,9 @@
-export let store = {
+
+let rerenderEntireTree = () => {
+    console.log('Вызывается для отрисовки UI')
+}
+
+let state = {
     profilePage: {
         postsArray: [
             {id: 0, message: 'Hi, how are you to day', likeCount: 15},
@@ -61,47 +66,43 @@ export let store = {
                 friendsAvatar: 'http://andrey-eltsov.ru/wp-content/uploads/2019/01/Agh-45juD_4uyAWb_5mj-d5_djhcgUng-Hgdt6-dj_jtu-Крутые-картинки.jpg'
             }
         ]
-    },
-    rerenderEntireTree() {
-        console.log('Вызывается для отрисовки UI')
-    },
-    addPost(){
-        let newPost = {
-            id: store.findIdPostArray(),
-            message: store.profilePage.newPostText,
-            likeCount: 0
-        };
-        store.profilePage.postsArray.push(newPost)
-        store.profilePage.newPostText = '';
-        store.rerenderEntireTree(store);
-    },
-    findIdPostArray() {
-        let i = store.profilePage.postsArray.length;
-        return i;
-    },
-    updateNewPostText(newText){
-        store.profilePage.newPostText = newText;
-        store.rerenderEntireTree(store);
-    },
-    addDialog() {
-        let newDialog = {
-            id: 4,
-            text: this.dialogPage.newDialogText
-        };
-        store.dialogPage.messagesArray.push(newDialog);
-        store.dialogPage.newDialogText = '';
-        store.rerenderEntireTree(store);
-    },
-    updateNewDialogText(newDialog){
-        store.dialogPage.newDialogText = newDialog;
-        store.rerenderEntireTree(store);
-    },
-    observerFunction(observer){         //Затираем ф-ю ререндер ф-ей из index.js
-        store.rerenderEntireTree = observer;
     }
 }
 
-window.store = store;
+window.state = state;
 
-/*
-export default store;*/
+export let addPost = () => {
+    let newPost = {
+        id: findIdPostArray(),
+        message: state.profilePage.newPostText,
+        likeCount: 0
+    };
+    state.profilePage.postsArray.push(newPost)
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+}
+export let addDialog = () => {
+    let newDialog = {
+        id: 4,
+        text: state.dialogPage.newDialogText
+    };
+    state.dialogPage.messagesArray.push(newDialog);
+    state.dialogPage.newDialogText = '';
+    rerenderEntireTree(state);
+}
+export let updateNewDialogText = (newDialog) => {
+    state.dialogPage.newDialogText = newDialog;
+    rerenderEntireTree(state);
+}
+export let observerFunction = (observer) => { //Затираем ф-ю ререндер ф-ей из index.js
+    rerenderEntireTree = observer;
+}
+let findIdPostArray = () => {
+    let i = state.profilePage.postsArray.length;
+    return i;
+}
+export default state;

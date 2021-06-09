@@ -17,7 +17,7 @@ const Dialogs = (props) => {
 
     let onPostChange = () => {
         let dialog = newPostElement.current.value;
-        props.updateNewDialog(dialog);
+        props.updateNewDialogText(dialog);
     }
 
     return <div className={moduleStyle.dialogs}>
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
             {messagesElements}
             <div className={moduleStyle.sendMessageBlock}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} value={props.dialogPage.newDialogText}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.newDialogText}></textarea>
                 </div>
                 <span>
                     <button onClick={addDialog}>Отправить сообщение</button>
