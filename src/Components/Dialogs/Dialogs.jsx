@@ -4,12 +4,21 @@ import {NavLink} from 'react-router-dom';
 import DialogItem from "./DialogItem/DialogsItem";
 import Messages from "./Messages/Messages";
 
+
 const Dialogs = (props) => {
 
-    let dialogsElement = props.state.dialogsArray.map(d => <DialogItem name={d.name} id={d.id} ava={d.userAvatar}/>)
-    let messagesElements = props.state.messagesArray.map(m => <Messages text={m.text}/>)
+    let dialogsElement = props.dialogPage.dialogsArray.map(d => <DialogItem name={d.name} id={d.id} ava={d.userAvatar}/>)
+    let messagesElements = props.dialogPage.messagesArray.map(m => <Messages text={m.text}/>)
     let newPostElement = React.createRef();
-    let onPostChange =
+
+    let addDialog = () => {
+        props.addDialog();
+    }
+
+    let onPostChange = () => {
+        let dialog = newPostElement.current.value;
+        props.updateNewDialog(dialog);
+    }
 
     return <div className={moduleStyle.dialogs}>
         <div className={moduleStyle.dialogsItem}>
@@ -19,10 +28,10 @@ const Dialogs = (props) => {
             {messagesElements}
             <div className={moduleStyle.sendMessageBlock}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.dialogPage.newDialogText}></textarea>
                 </div>
                 <span>
-                    <button>Отправить сообщение</button>
+                    <button onClick={addDialog}>Отправить сообщение</button>
                 </span>
             </div>
         </div>

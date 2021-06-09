@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addPost, updateNewPostText} from "./Redux/State";
+import {addDialog, addPost, updateNewDialogText, updateNewPostText} from "./Redux/State";
 
 
 export let rerenderEntireTree = (state) => {
@@ -10,8 +10,10 @@ export let rerenderEntireTree = (state) => {
         <React.StrictMode>
             <App
                 state={state}
-                addposts={addPost}
-                updateNewPost = {updateNewPostText}/>
+                addPost={addPost}
+                addDialog={addDialog}
+                updateNewPost = {updateNewPostText}
+                updateNewDialog = {updateNewDialogText}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

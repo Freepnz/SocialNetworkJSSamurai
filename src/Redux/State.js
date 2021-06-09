@@ -78,6 +78,7 @@ export let addPost = () => {
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
+
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
@@ -92,8 +93,10 @@ export let addDialog = () => {
     state.dialogPage.newDialogText = '';
     rerenderEntireTree(state);
 }
-export  let updateNewDialogText = (newDialog) => {
+
+export let updateNewDialogText = (newDialog) => {
     state.dialogPage.newDialogText = newDialog;
+    rerenderEntireTree(state);
 }
 
 let findIdPostArray = () => {
