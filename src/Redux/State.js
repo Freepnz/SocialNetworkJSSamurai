@@ -1,4 +1,7 @@
-import {rerenderEntireTree} from "../render";
+
+let rerenderEntireTree = () => {
+    console.log('Вызывается для отрисовки UI')
+}
 
 let state = {
     profilePage: {
@@ -102,6 +105,10 @@ export let updateNewDialogText = (newDialog) => {
 let findIdPostArray = () => {
     let i = state.profilePage.postsArray.length;
     return i;
+}
+
+export let observerFunction = (observer) => { //Затираем ф-ю ререндер ф-ей из index.js
+    rerenderEntireTree = observer;
 }
 
 
