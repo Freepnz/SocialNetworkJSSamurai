@@ -64,16 +64,22 @@ let store = {
             ]
         }
     },
-
-    getState() {
-        return this._state
-    },
-
     _callSubscriber() {
         console.log('Вызывается для отрисовки UI')
     },
 
-    addPost(){
+    getState() {
+        return this._state
+    },
+    observerFunction(observer) {         //Затираем ф-ю ререндер ф-ей из index.js
+        this._callSubscriber = observer;
+    },
+    findIdPostArray() {
+        let i = this._state.profilePage.postsArray.length;
+        return i;
+    },
+
+/*    addPost() {
         let newPost = {
             id: this.findIdPostArray(),
             message: this._state.profilePage.newPostText,
@@ -83,11 +89,7 @@ let store = {
         this._state.profilePage.newPostText = '';
         this._callSubscriber(this._state);
     },
-    findIdPostArray() {
-        let i = this._state.profilePage.postsArray.length;
-        return i;
-    },
-    updateNewPostText(newText){
+    updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
@@ -101,13 +103,39 @@ let store = {
         this._state.dialogPage.newDialogText = '';
         this._callSubscriber(this._state);
     },
-    updateNewDialogText(newDialog){
+    updateNewDialogText(newDialog) {
         this._state.dialogPage.newDialogText = newDialog;
         this._callSubscriber(this._state);
-    },
-    observerFunction(observer){         //Затираем ф-ю ререндер ф-ей из index.js
-        this._callSubscriber = observer;
+    },*/
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: this.findIdPostArray(),
+                message: this._state.profilePage.newPostText,
+                likeCount: 0
+            };
+            this._state.profilePage.postsArray.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-DIALOG') {
+            debugger
+            let newDialog = {
+                id: 4,
+                text: this._state.dialogPage.newDialogText
+            };
+            this._state.dialogPage.messagesArray.push(newDialog);
+            this._state.dialogPage.newDialogText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-DIALOG-TEXT') {
+            this._state.dialogPage.newDialogText = action.newDialog;
+            this._callSubscriber(this._state);
+        }
     }
+
 }
 
 window.store = store;
