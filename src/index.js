@@ -1,26 +1,28 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {store} from "./Redux/State";
+import store from "./Redux/State";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-let rerenderEntireTree = (store) => {
+
+let rerenderEntireTree = (state) => {
+
     ReactDOM.render(
         <React.StrictMode>
             <App
-                store={store}
-/*                addPost={addPost}
-                addDialog={addDialog}
-                updateNewPost = {updateNewPostText}
-                updateNewDialog = {updateNewDialogText}*//>
+                state={state}
+                addPost={store.addPost.bind(store)}
+                addDialog={store.addDialog.bind(store)}
+                updateNewPostText = {store.updateNewPostText.bind(store)}
+                updateNewDialogText = {store.updateNewDialogText.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-rerenderEntireTree(store);
+rerenderEntireTree(store.getState());
 
 store.observerFunction(rerenderEntireTree)
 

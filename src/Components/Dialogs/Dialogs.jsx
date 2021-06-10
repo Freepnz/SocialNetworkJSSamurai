@@ -6,12 +6,13 @@ import Messages from "./Messages/Messages";
 
 
 const Dialogs = (props) => {
-
-    let dialogsElement = props.dialogPage.dialogsArray.map(d => <DialogItem name={d.name} id={d.id} ava={d.userAvatar}/>)
+    let dialogsElement = props.dialogPage.dialogsArray.map(d => <DialogItem name={d.name} id={d.id}
+                                                                            ava={d.userAvatar}/>)
     let messagesElements = props.dialogPage.messagesArray.map(m => <Messages text={m.text}/>)
     let newPostElement = React.createRef();
 
     let addDialog = () => {
+        debugger
         props.addDialog();
     }
 
@@ -28,7 +29,7 @@ const Dialogs = (props) => {
             {messagesElements}
             <div className={moduleStyle.sendMessageBlock}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} value={props.newDialogText}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.dialogPage.newDialogText}></textarea>
                 </div>
                 <span>
                     <button onClick={addDialog}>Отправить сообщение</button>
