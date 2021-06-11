@@ -3,7 +3,7 @@ import React from 'react'
 import {NavLink} from 'react-router-dom';
 import DialogItem from "./DialogItem/DialogsItem";
 import Messages from "./Messages/Messages";
-
+import {updateNewDialogTextActionCreator, addDialogActionCreator} from "../../Redux/State";
 
 const Dialogs = (props) => {
     let dialogsElement = props.dialogPage.dialogsArray.map(d => <DialogItem name={d.name} id={d.id}
@@ -13,12 +13,12 @@ const Dialogs = (props) => {
 
     let addDialog = () => {
         debugger
-        props.dispatch({type: 'ADD-DIALOG'});
+        props.dispatch(addDialogActionCreator());
     }
 
     let onPostChange = () => {
         let dialog = newPostElement.current.value;
-        props.dispatch({type: 'UPDATE-NEW-DIALOG-TEXT', newDialog: dialog});
+        props.dispatch(updateNewDialogTextActionCreator(dialog));
     }
 
     return <div className={moduleStyle.dialogs}>
