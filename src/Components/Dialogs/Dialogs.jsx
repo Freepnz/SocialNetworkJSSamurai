@@ -13,12 +13,12 @@ const Dialogs = (props) => {
 
     let addDialog = () => {
         debugger
-        props.addDialog();
+        props.dispatch({type: 'ADD-DIALOG'});
     }
 
     let onPostChange = () => {
         let dialog = newPostElement.current.value;
-        props.updateNewDialogText(dialog);
+        props.dispatch({type: 'UPDATE-NEW-DIALOG-TEXT', newDialog: dialog});
     }
 
     return <div className={moduleStyle.dialogs}>
@@ -29,7 +29,8 @@ const Dialogs = (props) => {
             {messagesElements}
             <div className={moduleStyle.sendMessageBlock}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} value={props.dialogPage.newDialogText}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement}
+                              value={props.dialogPage.newDialogText}></textarea>
                 </div>
                 <span>
                     <button onClick={addDialog}>Отправить сообщение</button>
