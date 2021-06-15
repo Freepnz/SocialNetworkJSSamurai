@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_DIALOG = 'ADD-DIALOG';
-const UPDATE_NEW_DIALOG_TEXT = 'UPDATE-NEW-DIALOG-TEXT';
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogReducer";
 
 let store = {
     _state: {
@@ -10,7 +8,7 @@ let store = {
                 {id: 0, message: 'Hi, how are you to day', likeCount: 15},
                 {id: 1, message: 'This is my firs post?', likeCount: 0},
                 {id: 2, message: 'It\'s second post', likeCount: 4},
-                {id: 3, message: 'It\'s second post', likeCount: 11}
+                {id: 3, message: 'It\'s third post', likeCount: 11}
             ],
             newPostText: ''
         },
@@ -114,7 +112,7 @@ let store = {
     },*/
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
+        /*if (action.type === ADD_POST) {
             let newPost = {
                 id: this.findIdPostArray(),
                 message: this._state.profilePage.newPostText,
@@ -138,14 +136,14 @@ let store = {
         } else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
             this._state.dialogPage.newDialogText = action.newDialog;
             this._callSubscriber(this._state);
-        }
+        }*/
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
+
+        this._callSubscriber(this._state);
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export const addDialogActionCreator = () => ({type: ADD_DIALOG})
-export const updateNewDialogTextActionCreator = (text) => ({type: UPDATE_NEW_DIALOG_TEXT, newDialog: text})
 
 window.store = store;
 

@@ -1,8 +1,7 @@
 import moduleStyle from './MyPosts.module.css';
 import Post from './Post/Post';
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/State";
-
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/profileReducer";
 
 const MyPosts = (props) => {
 
@@ -14,11 +13,13 @@ const MyPosts = (props) => {
     }
 
     let onPostChange = () => {
+        debugger
         let text = newPostElement.current.value;
         props.dispatch(updateNewPostTextActionCreator(text));
     }
 
-    return <div className={moduleStyle.myPostsBlock}>
+    return  (
+        <div className={moduleStyle.myPostsBlock}>
         <h3>My posts</h3>
         <div>
             <div>
@@ -32,6 +33,7 @@ const MyPosts = (props) => {
             {postsElements}
         </div>
     </div>
+    )
 }
 
 export default MyPosts;

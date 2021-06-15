@@ -8,7 +8,6 @@ import App from './App';
 
 
 let rerenderEntireTree = (state) => {
-
     ReactDOM.render(
         <React.StrictMode>
             <App
