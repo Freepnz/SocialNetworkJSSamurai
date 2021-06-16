@@ -10,7 +10,6 @@ const profileReducer = (state, action) => {
         let newPost = {
             //id: this.findIdPostArray(),    --! Не забыть добавить
             id: 11,
-            //message: this._state.profilePage.newPostText,
             message: state.newPostText,
             likeCount: 0
         };
