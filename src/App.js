@@ -29,11 +29,7 @@ const App = (props) => {
                         <Dialogs
                             dialogPage={props.state.dialogPage}
                             dispatch={props.dispatch}
-                            newDialogText={props.state.dialogPage.dialogsArray.newDialogText}
-/*                            dialogPage={props.state.dialogPage}
-                            addDialog={props.addDialog}
-                            updateNewDialogText={props.updateNewDialogText}
-                            newDialogText={props.state.dialogPage.dialogsArray.newDialogText}*/
+                            //newDialogText={props.state.dialogPage}
                         />}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>

@@ -2,6 +2,7 @@ const ADD_DIALOG = 'ADD-DIALOG';
 const UPDATE_NEW_DIALOG_TEXT = 'UPDATE-NEW-DIALOG-TEXT';
 
 const dialogReducer = (state, action) => {
+    debugger
     if (action.type === ADD_DIALOG) {
         debugger
         let newDialog = {
@@ -10,10 +11,10 @@ const dialogReducer = (state, action) => {
         };
         state.messagesArray.push(newDialog);
         state.newDialogText = '';
-        return this.state;
+        return state;
     } else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
         state.newDialogText = action.newDialog;
-        return this.state;
+        return state;
     }
 }
 

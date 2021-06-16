@@ -20,7 +20,7 @@ const Dialogs = (props) => {
         props.dispatch(updateNewDialogTextActionCreator(dialog));
     }
 
-    return <div className={moduleStyle.dialogs}>
+    return (<div className={moduleStyle.dialogs}>
         <div className={moduleStyle.dialogsItem}>
             {dialogsElement}
         </div>
@@ -28,15 +28,14 @@ const Dialogs = (props) => {
             {messagesElements}
             <div className={moduleStyle.sendMessageBlock}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement}
-                              value={props.dialogPage.newDialogText}></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.dialogPage.newDialogText}/>
                 </div>
                 <span>
                     <button onClick={addDialog}>Отправить сообщение</button>
                 </span>
             </div>
         </div>
-    </div>
+    </div>)
 }
 
 export default Dialogs;
