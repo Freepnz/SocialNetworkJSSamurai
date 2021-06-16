@@ -77,66 +77,9 @@ let store = {
     observerFunction(observer) {         //Затираем ф-ю ререндер ф-ей из index.js
         this._callSubscriber = observer;
     },
-    findIdPostArray() {
-        let i = this._state.profilePage.postsArray.length;
-        return i;
-    },
-
-/*    addPost() {
-        let newPost = {
-            id: this.findIdPostArray(),
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.postsArray.push(newPost)
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-    addDialog() {
-        debugger
-        let newDialog = {
-            id: 4,
-            text: this._state.dialogPage.newDialogText
-        };
-        this._state.dialogPage.messagesArray.push(newDialog);
-        this._state.dialogPage.newDialogText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewDialogText(newDialog) {
-        this._state.dialogPage.newDialogText = newDialog;
-        this._callSubscriber(this._state);
-    },*/
 
     dispatch(action) {
-        /*if (action.type === ADD_POST) {
-            let newPost = {
-                id: this.findIdPostArray(),
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.postsArray.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_DIALOG) {
-            debugger
-            let newDialog = {
-                id: 4,
-                text: this._state.dialogPage.newDialogText
-            };
-            this._state.dialogPage.messagesArray.push(newDialog);
-            this._state.dialogPage.newDialogText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
-            this._state.dialogPage.newDialogText = action.newDialog;
-            this._callSubscriber(this._state);
-        }*/
+
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
 
@@ -144,6 +87,10 @@ let store = {
     }
 }
 
+export let findIdPostArray = () => {
+    let i = store._state.profilePage.postsArray.length
+    return i;
+}
 
 window.store = store;
 
