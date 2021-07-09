@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from "./Redux/State";
+import store from "./Redux/Store";
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -13,12 +13,6 @@ let rerenderEntireTree = (state) => {
             <App
                 state={state}
                 dispatch={store.dispatch.bind(store)}/>
-{/*            <App
-                state={state}
-                addPost={store.dispatch.bind(store)}
-                addDialog={store.dispatch.bind(store)}
-                updateNewPostText = {store.dispatch.bind(store)}
-                updateNewDialogText = {store.dispatch.bind(store)}/>*/}
         </React.StrictMode>,
         document.getElementById('root')
     );
